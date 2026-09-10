@@ -81,7 +81,7 @@ def main():
                 position = found + len(target)
                 checked += len(target)
 
-    pdf = pymupdf.open(ROOT / "science_curiosity.pdf")
+    pdf = pymupdf.open(ROOT / "science-curiosity.pdf")
     top_bookmarks = [entry for entry in pdf.get_toc() if entry[0] == 1]
     require(
         len(top_bookmarks) == 11, "Expected ten chapter bookmarks and acknowledgements."

@@ -6,7 +6,7 @@ The September 2026 edition redesigns the book and adds captions and image
 acknowledgements; it preserves the historical science and forecasts.
 
 This repository owns the editable manuscript, typesetting, fonts, illustrations,
-source research, recovery records and the finished [PDF](science_curiosity.pdf).
+source research, recovery records and the finished [PDF](science-curiosity.pdf).
 The public website repository keeps only the distributed PDF and its website
 presentation. There is no dependency on the website's Astro or Node.js toolchain.
 
@@ -49,7 +49,7 @@ The bundled fonts and images make compilation work offline. From this repository
 make build
 ```
 
-The result is `science_curiosity.pdf`, which is tracked alongside its source.
+The result is `science-curiosity.pdf`, which is tracked alongside its source.
 Typst ignores system fonts and uses the included fonts and its bundled fallbacks.
 The edition date is fixed in `layout.typ`; update it deliberately for a new edition.
 

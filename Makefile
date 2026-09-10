@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := help
 
 TYPST_VERSION := 0.15.1
-PDF := science_curiosity.pdf
+PDF := science-curiosity.pdf
 TYPST_FLAGS := --ignore-system-fonts --font-path fonts --pdf-standard a-2u
 WEBSITE_DIR ?= ../indrajeetpatil.github.io
 
