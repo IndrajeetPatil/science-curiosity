@@ -3,6 +3,8 @@
 
 // A typographic cover with an original orbital drawing.
 #page(margin: (x: 22mm, y: 20mm), fill: paper, header: none, footer: none)[
+  #set text(size: 12pt)
+  #set par(leading: 0.7em, spacing: 0.82em)
   #text(font: "Mukta", size: 10pt, fill: muted)[विज्ञानलेखांचा संग्रह]
   #v(18mm)
   #text(size: 47pt, fill: ink)[विज्ञान\ कुतूहल]
@@ -19,6 +21,7 @@
 ]
 
 #page(header: none, footer: none)[
+  #set text(size: 12pt)
   #v(17mm)
   #text(size: 27pt, fill: ink)[विज्ञान कुतूहल]
   #v(4mm)
@@ -40,6 +43,10 @@
     अक्षररचना: Tiro Devanagari Marathi आणि Mukta\
     #link("https://www.indrapatil.com/writing/")[www.indrapatil.com/writing/]
   ]
+]
+
+#page(header: none, footer: none)[
+  #include "rights.typ"
 ]
 
 #page(header: none, footer: none)[
@@ -65,7 +72,13 @@
   header: context {
     set text(size: 8pt, fill: muted)
     let p = counter(page).get().first()
-    if calc.odd(p) { align(right)[विज्ञान कुतूहल] } else { [इंद्रजीत पाटील] }
+    let chapters = query(heading.where(level: 1).before(here()))
+    let current = chapters.last(default: none)
+    let opening = query(heading.where(level: 1)).any(h => h.location().page() == here().page())
+    // Quiet chapter openings; a running chapter title helps readers navigate.
+    if current != none and not opening {
+      if calc.odd(p) { align(right)[#current.body] } else { [विज्ञान कुतूहल] }
+    }
   },
   footer: context {
     set text(size: 9pt, fill: muted)
@@ -94,6 +107,7 @@
 
 #place.flush()
 #pagebreak()
-#show heading.where(level: 1): it => block(above: 8mm, below: 9mm)[#text(size: 26pt, fill: ink)[#it.body]]
+#show heading.where(level: 1): set block(above: 8mm, below: 9mm)
+#show heading.where(level: 1): it => text(size: 26pt, fill: ink)[#it.body]
 #heading(level: 1, numbering: none)[चित्रस्रोत आणि आभार]
 #include "credits.typ"

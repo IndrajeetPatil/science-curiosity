@@ -34,11 +34,11 @@ check: build ## Check manuscript preservation and PDF integrity
 	uv run --script tools/check.py
 
 lint: ## Check Markdown and spelling
-	rumdl check README.md
+	rumdl check README.md provenance/rights-research.md
 	typos .
 
 link-check: ## Check maintained documentation and source links
-	lychee --include-verbatim README.md figures.json fonts/*.txt
+	lychee --include-verbatim README.md figures.json book.typ rights.typ fonts/*.txt
 
 recover: ## Decode the original PDF into build/recovery
 	uv run --script tools/recover.py

@@ -3,7 +3,9 @@
 The private home of Indrajeet Patil's **विज्ञान कुतूहल (Science Curiosity)**:
 ten Marathi popular-science articles originally published in *Loksatta* in 2011.
 The September 2026 edition redesigns the book and adds captions and image
-acknowledgements; it preserves the historical science and forecasts.
+acknowledgements; it preserves the historical science and forecasts. Its reading
+layout uses 12.5-point Marathi text, more space around paragraphs and captions,
+quiet chapter openings, running chapter titles and a dedicated rights page.
 
 This repository owns the editable manuscript, typesetting, fonts, illustrations,
 source research, recovery records and the finished [PDF](science-curiosity.pdf).
@@ -85,6 +87,8 @@ typesetting changes, and commit the source changes together with the rebuilt PDF
   paragraphs.
 - `book.typ`: cover, edition note, contents and chapter order.
 - `layout.typ`: typography, 160 × 240 mm pages, figures and the processor table.
+- `rights.typ`: the Marathi copyright and reader-use notice.
+- `credits.typ`: the three-page illustration acknowledgements and font credits.
 - `figures.json`: captions, credits, source links, verification status and notes.
 - `figures/`: the ten illustrations extracted without re-encoding, plus the new
   vector cover drawing.
@@ -173,6 +177,34 @@ not establish a blanket reuse licence for the book or its unresolved images.
 ## Rights
 
 This is a private authoring repository, not an open-source licence grant for the
-book. Font licences are in `fonts/`; illustration rights and unresolved sources
-are recorded individually in `figures.json`. The public reading copy is available
-on [Indrajeet Patil's writing page](https://www.indrapatil.com/writing/).
+book. The PDF reserves the author's rights in the original articles, credits
+their first publication in *Loksatta*, and identifies this as an independent
+author's collection. It offers a free personal reading copy and asks readers to
+share the official link. Except where law or an applicable licence permits the
+use, republication, redistribution, translation and commercial reuse require
+prior written permission from the relevant rights holders.
+
+This notice does not restrict public-domain material, override third-party
+licences, or establish permission for unresolved illustrations. Font licences
+are in `fonts/`; illustration rights and unresolved sources are recorded
+individually in `figures.json`. The public reading copy is available on
+[Indrajeet Patil's writing page](https://www.indrapatil.com/writing/).
+
+[Rights research](provenance/rights-research.md) records the official Indian
+copyright guidance and the archived Loksatta website terms consulted on
+10 September 2026. Website-use terms do not establish the terms of the author's
+2011 freelance contributions. No publisher clearance is claimed.
+
+## Layout decisions
+
+Typst optimises paragraph line breaks for both body text and ragged captions.
+The Marathi text retains normal shaping and ligatures, without letter spacing
+or character-level justification. Typst's default widow and orphan prevention
+remains enabled. Subheadings use the built-in heading block with explicit
+spacing and stickiness, so a heading stays with the following text.
+
+Figures retain their captions as a unit, with additional clearance from the
+body. The processor table uses larger text, padded rows and subtle alternating
+fills. Figure size and placement are adjusted where needed to avoid stranded
+headings or very short final pages. The cover has independent spacing so body
+typography changes cannot push its author line onto another page.

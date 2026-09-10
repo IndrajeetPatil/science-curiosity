@@ -10,24 +10,24 @@
   let item = figures.at(n - 1)
   figure(
     image(item.path, width: item.width * 1mm, height: item.height * 1mm, fit: "contain", alt: item.caption),
-    caption: [#item.caption #linebreak()#text(size: 8.3pt, fill: muted)[#item.credit]],
+    caption: [#item.caption #v(4pt)#text(font: "Mukta", size: 9.3pt, fill: muted)[#item.credit]],
     supplement: [चित्र],
     numbering: n => devanagari(n),
-    gap: 8pt,
+    gap: 11pt,
   )
 }
 
 #let processor-table() = {
   figure(
     {
-      set text(size: 8.8pt)
-      set par(leading: 0.65em)
+      set text(size: 10pt)
+      set par(justify: false, leading: 0.75em)
       table(
         columns: (0.65fr, 1.1fr, 1fr, 1.1fr, 1.2fr),
-        inset: (x: 5pt, y: 6pt),
+        inset: (x: 5pt, y: 8pt),
         stroke: none,
         align: (left, left, right, right, right),
-        fill: (_, y) => if y == 0 { rgb("eaf0ed") } else { none },
+        fill: (_, y) => if y == 0 { rgb("eaf0ed") } else if calc.even(y) { rgb("f6f8f6") } else { none },
         table.header(
           [वर्ष], [प्रोसेसरचे नाव], [प्रक्रिया\ (नैनोमीटर)], [वेग\ (क्रिया/सेकंद)], [ट्रान्झिस्टर्सची\ संख्या],
         ),
@@ -52,16 +52,18 @@
 #let book(body) = {
   set document(title: "विज्ञान कुतूहल | Science Curiosity", author: "इंद्रजीत पाटील", date: datetime(year: 2026, month: 9, day: 10), description: "दहा मराठी विज्ञानलेखांचा संग्रह. मूळ लेख: २०११. नव्या मांडणीतील आवृत्ती: २०२६.")
   set page(width: 160mm, height: 240mm, margin: (inside: 21mm, outside: 18mm, top: 20mm, bottom: 21mm), binding: left)
-  set text(font: "Tiro Devanagari Marathi", size: 12pt, lang: "mr", fill: rgb("202a29"), hyphenate: false)
-  set par(justify: true, leading: 0.7em, spacing: 0.82em)
+  set text(font: "Tiro Devanagari Marathi", size: 12.5pt, lang: "mr", fill: rgb("202a29"), hyphenate: false)
+  // Keep Devanagari shaping intact: no character-level tracking or justification.
+  // Optimise captions and other ragged text as well as justified body paragraphs.
+  set par(justify: true, leading: 0.76em, spacing: 1.1em, linebreaks: "optimized")
   set heading(numbering: "1")
   show heading.where(level: 2): set heading(numbering: none)
-  set figure(placement: auto)
-  set place(clearance: 10pt)
-  show figure.caption: set text(size: 9pt, fill: muted)
+  set figure(placement: auto, gap: 11pt)
+  set place(clearance: 18pt)
+  show figure.caption: set text(size: 10pt, fill: muted)
   show figure.caption: set align(left)
-  show figure.caption: set par(justify: false, leading: 0.6em)
-  show figure: set block(above: 1.2em, below: 1.2em)
+  show figure.caption: set par(justify: false, leading: 0.75em)
+  show figure: set block(above: 18pt, below: 20pt)
   show link: set text(fill: ink)
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
@@ -74,8 +76,8 @@
     line(length: 18mm, stroke: 1pt + gold)
     v(7mm)
   }
-  show heading.where(level: 2): it => block(above: 1.4em, below: 0.6em, sticky: true)[
-    #text(font: "Mukta", size: 13pt, fill: ink)[#it.body]
-  ]
+  // Style the heading's own block so its default spacing cannot override ours.
+  show heading.where(level: 2): set block(above: 1.6em, below: 0.75em, sticky: true)
+  show heading.where(level: 2): set text(font: "Mukta", size: 13.5pt, weight: "medium", fill: ink)
   body
 }

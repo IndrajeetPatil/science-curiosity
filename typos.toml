@@ -6,6 +6,8 @@ extend-ignore-re = ['"civilization": "civilisation"', '"specialized": "specialis
 [default.extend-identifiers]
 # Typst's alignment API uses this identifier.
 center = "center"
+# Typst's paragraph line-breaking option uses this exact string.
+optimized = "optimized"
 
 [files]
 # Preserve historical text and downloaded metadata exactly as research evidence.
