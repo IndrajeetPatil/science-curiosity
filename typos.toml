@@ -1,0 +1,12 @@
+[default]
+locale = "en-gb"
+# These keys are exact historical spellings used by the recovery audit.
+extend-ignore-re = ['"civilization": "civilisation"', '"specialized": "specialised"']
+
+[default.extend-identifiers]
+# Typst's alignment API uses this identifier.
+center = "center"
+
+[files]
+# Preserve historical text and downloaded metadata exactly as research evidence.
+extend-exclude = ["provenance/**", "build/**", "work/**", "tools/recover.py"]

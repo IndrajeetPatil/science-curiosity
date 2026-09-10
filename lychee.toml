@@ -1,0 +1,10 @@
+# Preserved research snapshots are evidence, not maintained documentation.
+exclude_path = ["provenance", "build", "work", ".git"]
+timeout = 30
+max_concurrency = 3
+max_retries = 2
+include_mail = false
+accept = [200, 204, 301, 302]
+user_agent = "ScienceCuriosityBook/1.0 (https://www.indrapatil.com/; editorial image attribution)"
+
+require_https = true
