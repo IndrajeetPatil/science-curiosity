@@ -65,7 +65,7 @@ The edition date is fixed in `layout.typ`; update it deliberately for a new edit
 | `make inspect` | Display PDF metadata and embedded fonts. |
 | `make check` | Rebuild and verify text preservation, assets, bookmarks and PDF structure. |
 | `make lint` | Check Markdown and spelling. |
-| `make link-check` | Check maintained links; preserved research snapshots are excluded. |
+| `make link-check` | Check maintained links with Lychee, without cached results. |
 | `make recover` | Re-run the legacy-font decoder into `build/recovery/`. |
 | `make export-website` | Rebuild and copy only the PDF into the sibling website checkout. |
 | `make clean` | Remove generated previews and recovery output under `build/`. |
@@ -79,6 +79,12 @@ make export-website WEBSITE_DIR=/path/to/indrajeetpatil.github.io
 Exporting only copies a file; it does not commit, push or deploy the website.
 Before committing, run `make check lint link-check`. Inspect rendered pages after
 typesetting changes, and commit the source changes together with the rebuilt PDF.
+
+`make link-check` scans Markdown, Typst, JSON and text files recursively, including
+all chapters, illustration metadata, font notices and the maintained rights
+research. It checks URLs in code spans and blocks, verifies local Markdown links,
+and fails on broken links. Archived image-research snapshots, the recovered
+transcript and generated scratch files are excluded in `lychee.toml`.
 
 ## Repository contents
 

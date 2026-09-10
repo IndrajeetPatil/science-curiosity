@@ -38,7 +38,7 @@ lint: ## Check Markdown and spelling
 	typos .
 
 link-check: ## Check maintained documentation and source links
-	lychee --include-verbatim README.md figures.json book.typ rights.typ fonts/*.txt
+	lychee --include-verbatim --cache=false .
 
 recover: ## Decode the original PDF into build/recovery
 	uv run --script tools/recover.py
