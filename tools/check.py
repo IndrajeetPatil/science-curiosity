@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.11"
+# requires-python = ">=3.14"
 # dependencies = ["pymupdf==1.28.2"]
 # ///
 """Check this historical edition's recovered manuscript and rendered PDF."""
