@@ -8,6 +8,8 @@ extend-ignore-re = ['"civilization": "civilisation"', '"specialized": "specialis
 center = "center"
 # Typst's paragraph line-breaking option uses this exact string.
 optimized = "optimized"
+# PyMuPDF's document catalogue accessor uses this spelling.
+pdf_catalog = "pdf_catalog"
 
 [files]
 # Preserve historical text and downloaded metadata exactly as research evidence.

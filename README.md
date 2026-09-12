@@ -22,11 +22,12 @@ presentation. There is no dependency on the website's Astro or Node.js toolchain
 - **SVG** supplies the original cover drawing. The ten raster illustrations
   retain the quality of the source PDF.
 - **Make** provides common operations; **Poppler** inspects and renders PDFs.
-- **Python 3.14+**, **uv** and pinned **PyMuPDF 1.28.2** support the optional
-  recovery and integrity checks. uv installs the script's declared dependency
+- **Python 3.14+**, **uv** and pinned **PyMuPDF 1.28.2** finalise PDF viewer
+  metadata and support the recovery and integrity checks. uv installs each
+  script's declared dependency
   into its cache and selects a compatible Python interpreter, downloading one
-  if needed. Both scripts declare `requires-python = ">=3.14"`; no Python
-  environment is needed for normal typesetting.
+  if needed. All scripts declare `requires-python = ">=3.14"`; no manually
+  managed Python environment is needed.
 - **rumdl**, **typos** and **lychee** check documentation, spelling and links.
 
 ## Edit and rebuild
@@ -45,7 +46,9 @@ On macOS, the supporting tools can be installed with:
 brew install poppler uv rumdl typos-cli lychee
 ```
 
-The bundled fonts and images make compilation work offline. From this repository:
+The bundled fonts and images make Typst compilation work offline. The first
+build also needs uv to obtain Python and PyMuPDF if they are not cached.
+From this repository:
 
 ```sh
 make build
@@ -54,6 +57,16 @@ make build
 The result is `science-curiosity.pdf`, which is tracked alongside its source.
 Typst ignores system fonts and uses the included fonts and its bundled fallbacks.
 The edition date is fixed in `layout.typ`; update it deliberately for a new edition.
+
+`layout.typ` owns the bilingual title, Marathi author and description, topic
+keywords, edition date and Marathi language declaration. Typst embeds these in
+the PDF Info dictionary and XMP. The final build step fills XMP's separate
+keyword bag, enables `DisplayDocTitle` so supporting viewers show the book
+title, and refreshes the saved-version
+identifier while preserving the logical document identifier. Identical builds
+produce identical files. This step preserves the tagged PDF/A-2u output and does
+not claim PDF/UA certification. `make watch` produces a Typst preview; finish
+with `make build` or `make export-website` to finalise metadata for distribution.
 
 | Command | Operation |
 | --- | --- |
@@ -113,6 +126,7 @@ transcript and generated scratch files are excluded in `lychee.toml`.
 - `tools/recover.py`: the book-specific legacy-font decoder. Its output is an
   intermediate transcript, not a replacement for the edited Unicode chapters.
 - `tools/check.py`: manuscript and PDF integrity checks.
+- `tools/finalise_pdf.py`: title-display preference and saved-version identifiers.
 
 Build previews, scratch research and Python caches are ignored by Git. The
 `clean` target leaves the tracked PDF, manuscript and provenance intact.

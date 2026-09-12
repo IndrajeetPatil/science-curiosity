@@ -7,6 +7,7 @@
 import hashlib
 import json
 import re
+import xml.etree.ElementTree as ET
 from pathlib import Path
 
 import pymupdf
@@ -82,6 +83,39 @@ def main():
                 checked += len(target)
 
     pdf = pymupdf.open(ROOT / "science-curiosity.pdf")
+    namespaces = {
+        "dc": "http://purl.org/dc/elements/1.1/",
+        "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+        "pdf": "http://ns.adobe.com/pdf/1.3/",
+    }
+    xmp = ET.fromstring(pdf.get_xml_metadata())
+    for info_key, xmp_path in {
+        "title": ".//dc:title/rdf:Alt/rdf:li",
+        "author": ".//dc:creator/rdf:Seq/rdf:li",
+        "subject": ".//dc:description/rdf:Alt/rdf:li",
+        "keywords": ".//pdf:Keywords",
+    }.items():
+        value = pdf.metadata[info_key]
+        require(
+            bool(value) and xmp.findtext(xmp_path, namespaces=namespaces) == value,
+            f"Missing or inconsistent PDF metadata: {info_key}.",
+        )
+    require(
+        [item.text for item in xmp.findall(".//dc:subject/rdf:Bag/rdf:li", namespaces)]
+        == pdf.metadata["keywords"].split(", "),
+        "XMP keyword entries do not match Info keywords.",
+    )
+    require(
+        pdf.xref_get_key(pdf.pdf_catalog(), "Lang") == ("string", "mr")
+        and xmp.findtext(".//dc:language/rdf:Bag/rdf:li", namespaces=namespaces)
+        == "mr",
+        "Expected Marathi language in the PDF catalogue and XMP.",
+    )
+    require(
+        pdf.xref_get_key(pdf.pdf_catalog(), "ViewerPreferences/DisplayDocTitle")
+        == ("bool", "true"),
+        "Expected the PDF viewer to display the document title.",
+    )
     top_bookmarks = [entry for entry in pdf.get_toc() if entry[0] == 1]
     require(
         len(top_bookmarks) == 11, "Expected ten chapter bookmarks and acknowledgements."
@@ -120,7 +154,7 @@ def main():
     )
     print(
         f"Verified {checked:,} recovered characters in reading order, {len(pdf)} pages, "
-        "10 illustrations, embedded fonts and chapter bookmarks."
+        "10 illustrations, embedded fonts, chapter bookmarks and PDF metadata."
     )
     print("Visual review is still required after changes to typography or layout.")
 

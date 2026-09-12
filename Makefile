@@ -14,6 +14,7 @@ doctor: ## Check the pinned Typst version
 
 build: doctor ## Typeset the distributable PDF
 	typst compile $(TYPST_FLAGS) book.typ $(PDF)
+	uv run --script tools/finalise_pdf.py $(PDF)
 
 pdf: build ## Alias for build
 

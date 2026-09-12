@@ -50,7 +50,13 @@
 }
 
 #let book(body) = {
-  set document(title: "विज्ञान कुतूहल | Science Curiosity", author: "इंद्रजीत पाटील", date: datetime(year: 2026, month: 9, day: 10), description: "दहा मराठी विज्ञानलेखांचा संग्रह. मूळ लेख: २०११. नव्या मांडणीतील आवृत्ती: २०२६.")
+  set document(
+    title: "विज्ञान कुतूहल | Science Curiosity",
+    author: "इंद्रजीत पाटील",
+    date: datetime(year: 2026, month: 9, day: 10),
+    description: "दहा मराठी विज्ञानलेखांचा संग्रह. मूळ लेख: २०११. नव्या मांडणीतील आवृत्ती: २०२६.",
+    keywords: ("विज्ञान", "मराठी", "लोकसत्ता", "popular science", "Marathi", "Science Curiosity"),
+  )
   set page(width: 160mm, height: 240mm, margin: (inside: 21mm, outside: 18mm, top: 20mm, bottom: 21mm), binding: left)
   set text(font: "Tiro Devanagari Marathi", size: 12.5pt, lang: "mr", fill: rgb("202a29"), hyphenate: false)
   // Keep Devanagari shaping intact: no character-level tracking or justification.
