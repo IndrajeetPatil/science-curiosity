@@ -22,12 +22,12 @@ presentation. There is no dependency on the website's Astro or Node.js toolchain
 - **SVG** supplies the original cover drawing. The ten raster illustrations
   retain the quality of the source PDF.
 - **Make** provides common operations; **Poppler** inspects and renders PDFs.
-- **Python 3.14+**, **uv** and pinned **PyMuPDF 1.28.2** finalise PDF viewer
+- **Python 3.15+**, **uv** and pinned **PyMuPDF 1.28.2** finalise PDF viewer
   metadata and support the recovery and integrity checks. uv installs each
-  script's declared dependency
-  into its cache and selects a compatible Python interpreter, downloading one
-  if needed. All scripts declare `requires-python = ">=3.14"`; no manually
-  managed Python environment is needed.
+  script's declared dependency into its cache and selects a compatible Python
+  interpreter, downloading one if needed. All scripts declare
+  `requires-python = ">=3.15"`; no manually managed Python environment is
+  needed.
 - **rumdl**, **typos** and **lychee** check documentation, spelling and links.
 
 ## Edit and rebuild

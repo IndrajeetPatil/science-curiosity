@@ -1,5 +1,5 @@
 # /// script
-# requires-python = ">=3.14"
+# requires-python = ">=3.15"
 # dependencies = ["pymupdf==1.28.2"]
 # ///
 """Complete the viewer metadata that Typst's PDF/A export does not set."""
