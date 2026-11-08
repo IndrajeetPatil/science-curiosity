@@ -5,7 +5,8 @@ ten Marathi popular-science articles originally published in *Loksatta* in 2011.
 The September 2026 edition redesigns the book and adds captions and image
 acknowledgements; it preserves the historical science and forecasts. Its reading
 layout uses 12.5-point Marathi text, more space around paragraphs and captions,
-quiet chapter openings, running chapter titles and a dedicated rights page.
+quiet chapter openings, bold section headings set apart by space, running
+chapter titles and a dedicated rights page.
 
 This repository owns the editable manuscript, typesetting, fonts, illustrations,
 source research, recovery records and the finished [PDF](science-curiosity.pdf).
