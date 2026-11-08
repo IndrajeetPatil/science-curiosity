@@ -83,7 +83,9 @@ with `make build` or `make export-website` to finalise metadata for distribution
 | `make export-website` | Rebuild and copy only the PDF into the sibling website checkout. |
 | `make clean` | Remove generated previews and recovery output under `build/`. |
 
-To use a website checkout elsewhere:
+The default website checkout is `../indrajeetpatil.github.io`, resolved from
+this repository's root rather than the current directory. To use a website
+checkout elsewhere:
 
 ```sh
 make export-website WEBSITE_DIR=/path/to/indrajeetpatil.github.io

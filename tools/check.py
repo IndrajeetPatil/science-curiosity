@@ -106,15 +106,15 @@ def check_metadata(pdf: pymupdf.Document) -> None:
         xmp_keywords == pdf.metadata["keywords"].split(", "),
         "XMP keyword entries do not match Info keywords.",
     )
-    catalog = pdf.pdf_catalog()
+    catalogue = pdf.pdf_catalog()
     require(
-        pdf.xref_get_key(catalog, "Lang") == ("string", "mr")
+        pdf.xref_get_key(catalogue, "Lang") == ("string", "mr")
         and xmp.findtext(".//dc:language/rdf:Bag/rdf:li", namespaces=XMP_NAMESPACES)
         == "mr",
         "Expected Marathi language in the PDF catalogue and XMP.",
     )
     require(
-        pdf.xref_get_key(catalog, "ViewerPreferences/DisplayDocTitle")
+        pdf.xref_get_key(catalogue, "ViewerPreferences/DisplayDocTitle")
         == ("bool", "true"),
         "Expected the PDF viewer to display the document title.",
     )

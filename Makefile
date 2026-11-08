@@ -3,7 +3,8 @@
 TYPST_VERSION := 0.15.1
 PDF := science-curiosity.pdf
 TYPST_FLAGS := --ignore-system-fonts --font-path fonts --pdf-standard a-2u
-WEBSITE_DIR ?= ../indrajeetpatil.github.io
+ROOT := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
+WEBSITE_DIR ?= $(ROOT)/../indrajeetpatil.github.io
 
 help: ## List common operations
 	@awk 'BEGIN {FS = ":.*## "} /^[a-z-]+:.*## / {printf "  %-18s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -35,7 +36,7 @@ check: build ## Check manuscript preservation and PDF integrity
 	uv run --script tools/check.py
 
 lint: ## Check Markdown and spelling
-	rumdl check README.md provenance/rights-research.md
+	rumdl check AGENTS.md README.md provenance/rights-research.md
 	typos .
 
 link-check: ## Check maintained documentation and source links
