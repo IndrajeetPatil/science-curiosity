@@ -17,7 +17,7 @@ presentation. There is no dependency on the website's Astro or Node.js toolchain
 - **Typst 0.15.1** typesets the book and exports tagged PDF/A-2u. Unicode `.typ`
   files are the editable master; JSON holds chapter and illustration metadata.
 - **Tiro Devanagari Marathi** supplies the body typography and **Mukta** the
-  supporting headings. Both font files and their SIL OFL notices are included.
+  supporting headings. The font files and their SIL OFL notices are included.
   Typst's own bundled fallback fonts cover remaining characters.
 - **SVG** supplies the original cover drawing. The ten raster illustrations
   retain the quality of the source PDF.
@@ -113,10 +113,11 @@ transcript and generated scratch files are excluded in `lychee.toml`.
 - `figures.json`: captions, credits, source links, verification status and notes.
 - `figures/`: the ten illustrations extracted without re-encoding, plus the new
   vector cover drawing.
-- `fonts/`: Tiro Devanagari Marathi Regular and Mukta Medium, with their original
-  SIL Open Font License notices (the introductory OFL link uses its current
-  HTTPS address). The font files came from Google Fonts' Tiro
-  Devanagari Marathi and Mukta directories on 10 September 2026.
+- `fonts/`: Tiro Devanagari Marathi Regular, Mukta Medium and Mukta Bold, with
+  their original SIL Open Font License notices (the introductory OFL link uses
+  its current HTTPS address). The font files came from Google Fonts' Tiro
+  Devanagari Marathi and Mukta directories: Mukta Bold on 8 November 2026 and
+  the others on 10 September 2026.
 - `chapters.json`: original PDF page ranges for comparison.
 - `provenance/original-2011.pdf`: the original PDF, retained privately for recovery
   and comparison; it is not the edition distributed on the website.
@@ -222,8 +223,10 @@ copyright guidance and the archived Loksatta website terms consulted on
 Typst optimises paragraph line breaks for both body text and ragged captions.
 The Marathi text retains normal shaping and ligatures, without letter spacing
 or character-level justification. Typst's default widow and orphan prevention
-remains enabled. Subheadings use the built-in heading block with explicit
-spacing and stickiness, so a heading stays with the following text.
+remains enabled. Section subheadings are set in Mukta Bold with roughly a
+blank line of space above and below, so they stand apart from the body text.
+They use the built-in heading block with explicit spacing and stickiness, so a
+heading stays with the following text.
 
 Figures retain their captions as a unit, with additional clearance from the
 body. The processor table uses larger text, padded rows and subtle alternating

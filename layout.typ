@@ -82,7 +82,8 @@
     v(7mm)
   }
   // Style the heading's own block so its default spacing cannot override ours.
-  show heading.where(level: 2): set block(above: 1.6em, below: 0.75em, sticky: true)
-  show heading.where(level: 2): set text(font: "Mukta", size: 13.5pt, weight: "medium", fill: ink)
+  // Roughly a blank line above and below sets each section heading apart.
+  show heading.where(level: 2): set block(above: 30pt, below: 18pt, sticky: true)
+  show heading.where(level: 2): set text(font: "Mukta", size: 13.5pt, weight: "bold", fill: ink)
   body
 }
