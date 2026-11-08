@@ -2,7 +2,7 @@
 #show: book
 
 // A typographic cover with an original orbital drawing.
-#page(margin: (x: 22mm, y: 20mm), fill: paper, header: none, footer: none)[
+#page(margin: (x: 22mm, y: 20mm), fill: paper)[
   #set text(size: 12pt)
   #set par(leading: 0.7em, spacing: 0.82em)
   #text(font: "Mukta", size: 10pt, fill: muted)[विज्ञानलेखांचा संग्रह]
@@ -20,7 +20,7 @@
   #text(font: "Mukta", size: 9pt, fill: muted)[मराठी · दहा लेख · २०११]
 ]
 
-#page(header: none, footer: none)[
+#page[
   #set text(size: 12pt)
   #v(17mm)
   #text(size: 27pt, fill: ink)[विज्ञान कुतूहल]
@@ -45,19 +45,17 @@
   ]
 ]
 
-#page(header: none, footer: none)[
-  #include "rights.typ"
-]
+#page(include "rights.typ")
 
-#page(header: none, footer: none)[
+#page[
   #text(size: 28pt, fill: ink)[अनुक्रमणिका]
   #v(5mm)
   #text(size: 10pt, fill: muted)[लेखाच्या शीर्षकावर क्लिक करून त्या पानावर जाता येईल.]
   #v(8mm)
-  #show outline.entry: it => block(above: 7pt, below: 7pt)[
+  #show outline.entry: it => block(spacing: 7pt)[
     #link(it.element.location())[
       #grid(columns: (1fr, 10mm), column-gutter: 4mm,
-        [#it.element.body],
+        it.element.body,
         align(right)[#context devanagari(counter(page).at(it.element.location()).first())],
       )
     ]
@@ -71,43 +69,36 @@
 #set page(
   header: context {
     set text(size: 8pt, fill: muted)
-    let p = counter(page).get().first()
-    let chapters = query(heading.where(level: 1).before(here()))
-    let current = chapters.last(default: none)
+    let current = query(heading.where(level: 1).before(here())).last(default: none)
     let opening = query(heading.where(level: 1)).any(h => h.location().page() == here().page())
     // Quiet chapter openings; a running chapter title helps readers navigate.
     if current != none and not opening {
-      if calc.odd(p) { align(right)[#current.body] } else { [विज्ञान कुतूहल] }
+      if calc.odd(counter(page).get().first()) { align(right, current.body) } else [विज्ञान कुतूहल]
     }
   },
   footer: context {
     set text(size: 9pt, fill: muted)
-    align(center)[#devanagari(counter(page).get().first())]
+    align(center, counter(page).display(devanagari))
   },
 )
-#include "chapters/01-self-awareness.typ"
-#place.flush()
-#include "chapters/02-buckyballs.typ"
-#place.flush()
-#include "chapters/03-immunity.typ"
-#place.flush()
-#include "chapters/04-moores-law.typ"
-#place.flush()
-#include "chapters/05-machine-intelligence.typ"
-#place.flush()
-#include "chapters/06-lie-detection.typ"
-#place.flush()
-#include "chapters/07-perpetual-motion.typ"
-#place.flush()
-#include "chapters/08-thermoregulation.typ"
-#place.flush()
-#include "chapters/09-metamaterials.typ"
-#place.flush()
-#include "chapters/10-regeneration.typ"
+#for chapter in (
+  "01-self-awareness",
+  "02-buckyballs",
+  "03-immunity",
+  "04-moores-law",
+  "05-machine-intelligence",
+  "06-lie-detection",
+  "07-perpetual-motion",
+  "08-thermoregulation",
+  "09-metamaterials",
+  "10-regeneration",
+) {
+  include "chapters/" + chapter + ".typ"
+  place.flush()
+}
 
-#place.flush()
 #pagebreak()
 #show heading.where(level: 1): set block(above: 8mm, below: 9mm)
-#show heading.where(level: 1): it => text(size: 26pt, fill: ink)[#it.body]
+#show heading.where(level: 1): it => text(size: 26pt, fill: ink, it.body)
 #heading(level: 1, numbering: none)[चित्रस्रोत आणि आभार]
 #include "credits.typ"

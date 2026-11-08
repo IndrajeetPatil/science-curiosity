@@ -3,7 +3,7 @@
 #let rule = rgb("cbd5d1")
 #let gold = rgb("ae7546")
 #let paper = rgb("faf8f1")
-#let devanagari(n) = str(n).clusters().map(c => if c in "0123456789" { ("०", "१", "२", "३", "४", "५", "६", "७", "८", "९").at(int(c)) } else { c }).join()
+#let devanagari(n) = numbering("१", n)
 #let figures = json("figures.json")
 
 #let book-figure(n) = {
@@ -12,8 +12,6 @@
     image(item.path, width: item.width * 1mm, height: item.height * 1mm, fit: "contain", alt: item.caption),
     caption: [#item.caption #v(4pt)#text(font: "Mukta", size: 9.3pt, fill: muted)[#item.credit]],
     supplement: [चित्र],
-    numbering: n => devanagari(n),
-    gap: 11pt,
   )
 }
 
@@ -44,7 +42,6 @@
     },
     kind: table,
     supplement: [कोष्टक],
-    numbering: n => devanagari(n),
     caption: [निवडक इंटेल प्रोसेसर्सची तुलना. आकडेवारी मूळ २०११ च्या लेखाप्रमाणे.],
   )
 }
@@ -64,7 +61,7 @@
   set par(justify: true, leading: 0.76em, spacing: 1.1em, linebreaks: "optimized")
   set heading(numbering: "1")
   show heading.where(level: 2): set heading(numbering: none)
-  set figure(placement: auto, gap: 11pt)
+  set figure(placement: auto, gap: 11pt, numbering: devanagari)
   set place(clearance: 18pt)
   show figure.caption: set text(size: 10pt, fill: muted)
   show figure.caption: set align(left)
@@ -74,10 +71,12 @@
   show heading.where(level: 1): it => {
     pagebreak(weak: true)
     v(9mm)
-    text(font: "Mukta", size: 10pt, fill: gold)[लेख #context devanagari(counter(heading).get().first())]
+    text(font: "Mukta", size: 10pt, fill: gold)[लेख #context counter(heading).display(devanagari)]
     v(3mm)
-    block(width: 100%)[#set par(justify: false)
-    #text(size: 25pt, fill: ink)[#it.body]]
+    block(width: 100%, {
+      set par(justify: false)
+      text(size: 25pt, fill: ink, it.body)
+    })
     v(4mm)
     line(length: 18mm, stroke: 1pt + gold)
     v(7mm)
