@@ -6,7 +6,6 @@ layout decisions.
 
 ## Before committing
 
-- Deliver changes through a pull request, ready for review.
 - Run `make check lint link-check`. Inspect rendered pages (`make render`)
   after typesetting or layout changes.
 - Commit source changes together with the rebuilt `science-curiosity.pdf`.
@@ -15,19 +14,9 @@ layout decisions.
 
 ## After pull requests merge
 
-The website distributes the PDF, so refresh its copy once all pull requests
-in a batch have merged:
-
-1. Update local `main`: `git switch main && git pull --ff-only`.
-2. Rebuild and copy the PDF: `make export-website`.
-3. Check the website checkout with `git -C ../indrajeetpatil.github.io status`.
-   If `public/pdfs/writing/science-curiosity.pdf` changed, deliver it through a
-   website pull request that follows that repository's `AGENTS.md`. If the file
-   is unchanged, there is nothing more to do.
-
-`make export-website` resolves the website checkout as the sibling directory
-`../indrajeetpatil.github.io` relative to this repository's root (the
-`Makefile`'s directory), not the shell's current directory. Run it with
-`make -C <path-to-this-repository> export-website` from elsewhere. Override
-the location with `WEBSITE_DIR=/path/to/indrajeetpatil.github.io` only when
-the website is checked out somewhere else.
+The website distributes the PDF. Once every pull request in a batch has merged,
+update local `main` and run `make export-website`, which copies the PDF into
+the website checkout at `../indrajeetpatil.github.io`, resolved from this
+repository's root (override with `WEBSITE_DIR`). If
+`public/pdfs/writing/science-curiosity.pdf` changed there, deliver it through a
+website pull request that follows that repository's `AGENTS.md`.
