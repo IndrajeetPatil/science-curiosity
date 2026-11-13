@@ -36,7 +36,7 @@ check: build ## Check manuscript preservation and PDF integrity
 	uv run --script tools/check.py
 
 lint: ## Check Markdown and spelling
-	rumdl check AGENTS.md README.md provenance/rights-research.md
+	rumdl check AGENTS.md README.md docs/*.md provenance/rights-research.md
 	typos .
 
 link-check: ## Check maintained documentation and source links
