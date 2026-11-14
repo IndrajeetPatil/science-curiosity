@@ -15,8 +15,7 @@ Typst source for the Marathi book *Science Curiosity*. Start with the
 ## After pull requests merge
 
 The website distributes the PDF. Once every pull request in a batch has merged,
-update local `main` and run `make export-website`, which copies the PDF into
-the website checkout at `../indrajeetpatil.github.io`, resolved from this
-repository's root (override with `WEBSITE_DIR`). If
+update local `main` and run `make export-website WEBSITE_DIR=<website
+checkout>`, which copies the PDF into that checkout. If
 `public/pdfs/writing/science-curiosity.pdf` changed there, deliver it through a
 website pull request that follows that repository's `AGENTS.md`.

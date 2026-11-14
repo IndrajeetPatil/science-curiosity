@@ -3,8 +3,6 @@
 TYPST_VERSION := 0.15.1
 PDF := science-curiosity.pdf
 TYPST_FLAGS := --ignore-system-fonts --font-path fonts --pdf-standard a-2u
-ROOT := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
-WEBSITE_DIR ?= $(ROOT)/../indrajeetpatil.github.io
 
 help: ## List common operations
 	@awk 'BEGIN {FS = ":.*## "} /^[a-z-]+:.*## / {printf "  %-18s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -45,7 +43,8 @@ link-check: ## Check maintained documentation and source links
 recover: ## Decode the original PDF into build/recovery
 	uv run --script tools/recover.py
 
-export-website: build ## Copy only the PDF to the website checkout
+export-website: build ## Copy only the PDF to the website checkout in WEBSITE_DIR
+	@test -n "$(WEBSITE_DIR)" || { echo "Set WEBSITE_DIR to the website checkout."; exit 1; }
 	@test -d "$(WEBSITE_DIR)/public/pdfs/writing" || { echo "Set WEBSITE_DIR to the website checkout."; exit 1; }
 	cp $(PDF) "$(WEBSITE_DIR)/public/pdfs/writing/$(PDF)"
 

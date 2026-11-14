@@ -1,0 +1,51 @@
+name: Build PDF
+
+on:
+  push:
+    branches: [main]
+    paths: &source-paths
+      - "*.typ"
+      - "*.json"
+      - "Makefile"
+      - "science-curiosity.pdf"
+      - "chapters/**"
+      - "figures/**"
+      - "fonts/**"
+      - "provenance/original-2011.pdf"
+      - "tools/**"
+      - ".github/workflows/build-pdf.yaml"
+  pull_request:
+    paths: *source-paths
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: typst-community/setup-typst@00ad6338f0b34724ea002136bfb701a6c18585b0 # v5.3.2
+        with:
+          typst-version: 0.15.1
+
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2 # v10.3.3
+
+      - name: Build and check the PDF
+        run: make check
+
+      - name: Check the committed PDF matches the source
+        run: |
+          git diff --exit-code --stat -- science-curiosity.pdf || {
+            echo "::error file=science-curiosity.pdf::Rebuild the PDF with 'make build' and commit it."
+            exit 1
+          }

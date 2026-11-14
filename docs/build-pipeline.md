@@ -28,9 +28,9 @@ build does not claim PDF/UA certification.
 
 ## Distribution
 
-`make export-website` rebuilds and copies only `science-curiosity.pdf` into the
-sibling website checkout at `../indrajeetpatil.github.io`. The path is resolved
-from the repository root, or can be overridden with `WEBSITE_DIR`. Exporting
+`make export-website WEBSITE_DIR=<website checkout>` rebuilds and copies only
+`science-curiosity.pdf` into the website checkout's
+`public/pdfs/writing/` directory. Exporting
 does not commit, push or deploy the website; the website change has its own
 review and release process.
 
