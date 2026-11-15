@@ -79,5 +79,5 @@ The public reading copy is available on
 - [Layout](docs/layout.md): the book's page and typography decisions.
 - [Manuscript](docs/manuscript.md): the canonical chapter text and how
   `make check` guards its wording.
-- [Illustration sources](docs/illustration-sources.md): image attribution and
-  verification status.
+- [Illustration sources](docs/illustration-sources.md): each image's
+  creator, source, and licence.
