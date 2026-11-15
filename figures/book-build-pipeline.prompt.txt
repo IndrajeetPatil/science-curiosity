@@ -4,8 +4,8 @@ Primary request: create a clear left-to-right four-stage diagram showing exactly
 Panel 1 exact label: AUTHORING. Exact subline: Unicode Typst source + book assets. Show a manuscript file and author editing it.
 Panel 2 exact label: MAKE + TYPST 0.15.1. Exact subline: Typeset pages → tagged PDF/A-2u. Show Make coordinating a typesetting engine turning source pages into a neatly stacked book PDF.
 Panel 3 exact label: PYTHON + UV + PYMUPDF. Exact subline: Finalise PDF metadata. Show a finished document receiving a small metadata stamp.
-Panel 4 exact label: WEBSITE EXPORT. Exact subline: make export-website copies the PDF. Show the finished PDF moving to a simple website page for readers.
+Panel 4 exact label: GITHUB ACTIONS + PAGES. Exact subline: Deploys the committed PDF on main. Show a committed PDF on the main branch moving through a GitHub Actions deployment to a simple Pages website for readers.
 Style/medium: polished flat editorial infographic with crisp black outlines, simple geometric shapes, minimal detail, warm off-white background, restrained deep teal accents, subtle warm-gray vertical dividers, similar to clean modern developer documentation illustrations.
 Composition/framing: extra-wide landscape banner, four evenly sized stages in one row, large legible typography, ample spacing; make all exact labels and sublines correctly spelled and easy to read at README display size.
-Text (verbatim): "AUTHORING"; "Unicode Typst source + book assets"; "MAKE + TYPST 0.15.1"; "Typeset pages → tagged PDF/A-2u"; "PYTHON + UV + PYMUPDF"; "Finalise PDF metadata"; "WEBSITE EXPORT"; "make export-website copies the PDF".
-Constraints: render every text string exactly as provided, once, with no other text. No letters inside illustrations, no logos, no watermarks, no tiny decorative rays.
+Text (verbatim): "AUTHORING"; "Unicode Typst source + book assets"; "MAKE + TYPST 0.15.1"; "Typeset pages → tagged PDF/A-2u"; "PYTHON + UV + PYMUPDF"; "Finalise PDF metadata"; "GITHUB ACTIONS + PAGES"; "Deploys the committed PDF on main".
+Constraints: render every text string exactly as provided, once, with no other text. No additional text inside illustrations, no logos, no watermarks, no tiny decorative rays.
