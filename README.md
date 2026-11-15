@@ -30,10 +30,10 @@ website links readers to it.
 The source is organised around the book: `chapters/` holds the canonical Marathi
 text; `book.typ` defines the cover, front matter, and chapter order; `layout.typ`
 sets typography and page design. `figures/`, `figures.json`, and `credits.typ`
-hold illustrations and their acknowledgements, `author.typ` holds the author
-note, while `fonts/` contains the
-licensed font files. The tools in `tools/` check the manuscript and PDF and
-finalise the built PDF.
+hold illustrations and their acknowledgements; `author.typ` holds the author
+note; `fonts/` contains the licensed font files. `social-card.typ` renders the
+link-preview card in `site/`, and the tools in `tools/` check the manuscript
+and PDF and finalise the built PDF.
 
 ### Build pipeline
 
