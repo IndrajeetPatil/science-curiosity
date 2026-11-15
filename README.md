@@ -9,7 +9,7 @@ This repository contains the editable book, its assets, and the finished
 [PDF](science-curiosity.pdf). GitHub Pages publishes the PDF, and the author's
 website links readers to it.
 
-![Four-stage book build: authoring Unicode Typst source and assets; Make runs Typst 0.15.1 to typeset tagged PDF/A-2u pages; Python, uv and PyMuPDF finalise PDF metadata; make export-website copies the PDF to the website.](figures/book-build-pipeline.webp)
+![Four-stage book build: authoring Unicode Typst source and assets; Make runs Typst 0.15.1 to typeset tagged PDF/A-2u pages; Python, uv, and PyMuPDF finalise PDF metadata; GitHub Actions deploys the committed PDF to Pages on main.](figures/book-build-pipeline.webp)
 
 ## Technology and architecture
 
