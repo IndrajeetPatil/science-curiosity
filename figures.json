@@ -56,7 +56,7 @@
     "work": "Die of an Intel 80486 microprocessor, ca. 1990 (photographed 2008-02-16)",
     "source": "https://commons.wikimedia.org/wiki/File:Die_(the_%27heart%27)_of_a_microprocessor_Intel_80486_with_1.2_millions_of_transistors,_ca._1990_(turned_horizontal).jpg",
     "licence": "Public domain, per Commons",
-    "evidence": "Replacement image chosen from Wikimedia Commons for its open licence; the file is used as published there, resized for print.",
+    "evidence": "Chosen from Wikimedia Commons for its open licence; the file is used as published there, resized for print.",
     "note": "Thomy pc (German Wikipedia). इंटेल ८०४८६ प्रोसेसरचे छायाचित्र, १६ फेब्रुवारी २००८. Wikimedia Commons वरील नोंदीनुसार सार्वजनिक मालकी."
   },
   {
@@ -86,7 +86,7 @@
     "work": "FMRI scan during working memory tasks (2010)",
     "source": "https://commons.wikimedia.org/wiki/File:FMRI_scan_during_working_memory_tasks.jpg",
     "licence": "Public domain (work of the US federal government, per Commons)",
-    "evidence": "Replacement image chosen from Wikimedia Commons for its open licence; the file is used as published there.",
+    "evidence": "Chosen from Wikimedia Commons for its open licence; the file is used as published there, resized for print.",
     "note": "John Graner, Neuroimaging Department, National Intrepid Center of Excellence, Walter Reed National Military Medical Center. FMRI scan during working memory tasks, २०१०. अमेरिकी शासकीय कार्य म्हणून Wikimedia Commons वरील नोंदीनुसार सार्वजनिक मालकी."
   },
   {
@@ -106,18 +106,18 @@
   },
   {
     "id": 8,
-    "path": "figures/08-infrared-animals.jpg",
-    "width": 112,
-    "height": 70,
-    "caption": "कुत्रा आणि सरडा: दृश्यमान प्रकाशातील छायाचित्रे व अवरक्त प्रतिमा. रंग तापमानातील फरक दर्शवतात. हातातील उष्णता सरड्याच्या शरीरात जाण्याचे उदाहरणही दिसते.",
-    "credit": "NASA/IPAC · Cool Cosmos, Infrared Zoo · मूळ संग्रहातील संकलित चित्र.",
-    "status": "verified-components",
-    "creator": "NASA/IPAC",
-    "work": "Cool Cosmos: Infrared Zoo; dog and collared lizard images",
-    "source": "https://web.archive.org/web/20111222030920/http://coolcosmos.ipac.caltech.edu:80/image_galleries/ir_zoo/coldwarm.html",
-    "licence": "NASA/IPAC credit; dog thermogram recorded as public domain on Commons; composite licence not independently established",
-    "evidence": "Dog thermogram matched to Commons Infrared dog.jpg. Archived Cool Cosmos coldwarm page and its lizard_cool.jpg provide the lizard component. The original four-panel assembly is retained, without attributing its assembly to a named person.",
-    "note": "NASA/IPAC, Cool Cosmos: Infrared Zoo. कुत्र्याची अवरक्त प्रतिमा Wikimedia Commons वरील Infrared dog.jpg शी जुळते. सरड्याची प्रतिमा संग्रहित Cool Cosmos पानावरील lizard_cool.jpg शी जुळते. येथे मूळ पुस्तकातील चार प्रतिमांची मांडणी ठेवली आहे; त्या संकलनकर्त्याचे नाव निश्चित नाही."
+    "path": "figures/08-snake-mouse-thermogram.jpg",
+    "width": 84,
+    "height": 50,
+    "caption": "उंदीर गिळणाऱ्या सापाची अवरक्त (थर्मल) प्रतिमा. शीतरक्तीय साप सभोवतालच्या तापमानाइतकाच थंड दिसतो, तर उष्ण रक्ताचा उंदीर उजळ रंगात दिसतो. रंग तापमानातील फरक दर्शवतात.",
+    "credit": "Arno / Coen · Wikimedia Commons · CC BY-SA 3.0.",
+    "status": "verified",
+    "creator": "Arno / Coen (nutscode.com)",
+    "work": "Wiki snake eats mouse (thermogram, 2006-08-16)",
+    "source": "https://commons.wikimedia.org/wiki/File:Wiki_snake_eats_mouse.jpg",
+    "licence": "Creative Commons Attribution-ShareAlike 3.0 (CC BY-SA 3.0)",
+    "evidence": "Chosen from Wikimedia Commons for its open licence; the file is used as published there.",
+    "note": "Arno / Coen. Wiki snake eats mouse, १६ ऑगस्ट २००६. Wikimedia Commons, Creative Commons Attribution-ShareAlike 3.0 (creativecommons.org/licenses/by-sa/3.0) परवान्याअंतर्गत."
   },
   {
     "id": 9,
@@ -131,7 +131,7 @@
     "work": "Circular EM cloak using transformation optics",
     "source": "https://commons.wikimedia.org/wiki/File:Circular_EM_cloak_using_transformation_optics.svg",
     "licence": "Creative Commons Attribution 3.0 (CC BY 3.0)",
-    "evidence": "Replacement image chosen from Wikimedia Commons for its open licence; the SVG is rendered to a raster image for print without other changes.",
+    "evidence": "Chosen from Wikimedia Commons for its open licence; the SVG is rendered to a raster image for print without other changes.",
     "note": "Physicsch. Circular EM cloak using transformation optics. Wikimedia Commons, Creative Commons Attribution 3.0 (creativecommons.org/licenses/by/3.0) परवान्याअंतर्गत. मुद्रणासाठी SVG चित्राचे रास्टर प्रतिमेत रूपांतर केले आहे; इतर बदल केलेले नाहीत."
   },
   {
@@ -146,7 +146,7 @@
     "work": "Axolotl Ambystoma mexicanum, Aquarium Dubuisson, Liège (2016-01-30)",
     "source": "https://commons.wikimedia.org/wiki/File:Axolotl_Ambystoma_mexicanum_Aquarium_Li%C3%A8ge_30012016_3.jpg",
     "licence": "CC0 1.0 public-domain dedication",
-    "evidence": "Replacement image chosen from Wikimedia Commons for its open licence; the file is used as published there, resized for print.",
+    "evidence": "Chosen from Wikimedia Commons for its open licence; the file is used as published there, resized for print.",
     "note": "Vassil. Aquarium Dubuisson, Liège येथील ॲक्सोलोटल, ३० जानेवारी २०१६. छायाचित्रकाराने CC0 अंतर्गत सार्वजनिक मालकीत दिलेली प्रतिमा."
   }
 ]
