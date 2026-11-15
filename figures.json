@@ -62,8 +62,8 @@
   {
     "id": 5,
     "path": "figures/05-turing-test.png",
-    "width": 58,
-    "height": 75,
+    "width": 49,
+    "height": 63,
     "caption": "टुरिंग चाचणीमध्ये C हा परीक्षक A आणि B यांच्याशी लिखित संवाद साधतो. त्यांपैकी कोण संगणक आणि कोण मनुष्य हे ओळखण्याचा प्रयत्न करतो.",
     "credit": "Bilby · Turing Test version 3 · सार्वजनिक मालकी.",
     "status": "verified",

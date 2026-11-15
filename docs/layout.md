@@ -1,9 +1,10 @@
 # Book layout
 
-The book uses 160 × 240 mm pages, 12.5-point Marathi body text and generous
-space around paragraphs and captions. Tiro Devanagari Marathi provides the body
-face; Mukta Bold sets section headings. Included font files keep the layout
-consistent across systems.
+The book uses 160 × 240 mm pages, 12.5-point Marathi body text with open line
+spacing for comfortable reading, and generous space around paragraphs and
+captions. Tiro Devanagari Marathi provides the body face; Mukta Bold sets
+section headings. Included font files keep the layout consistent across
+systems.
 
 Typst optimises line breaks for justified body text and ragged captions. Marathi
 shaping and ligatures remain intact: the text uses neither letter spacing nor

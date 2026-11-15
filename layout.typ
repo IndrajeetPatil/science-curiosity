@@ -58,14 +58,14 @@
   set text(font: "Tiro Devanagari Marathi", size: 12.5pt, lang: "mr", fill: rgb("202a29"), hyphenate: false)
   // Keep Devanagari shaping intact: no character-level tracking or justification.
   // Optimise captions and other ragged text as well as justified body paragraphs.
-  set par(justify: true, leading: 0.76em, spacing: 1.1em, linebreaks: "optimized")
+  set par(justify: true, leading: 1.05em, spacing: 1.45em, linebreaks: "optimized")
   set heading(numbering: "1")
   show heading.where(level: 2): set heading(numbering: none)
   set figure(placement: auto, gap: 11pt, numbering: devanagari)
   set place(clearance: 18pt)
   show figure.caption: set text(size: 10pt, fill: muted)
   show figure.caption: set align(left)
-  show figure.caption: set par(justify: false, leading: 0.75em)
+  show figure.caption: set par(justify: false, leading: 0.9em)
   show figure: set block(above: 18pt, below: 20pt)
   show link: set text(fill: ink)
   // Chapters open on a right-hand (odd) page, as in printed books.
@@ -75,7 +75,7 @@
     text(font: "Mukta", size: 10pt, fill: gold)[लेख #context counter(heading).display(devanagari)]
     v(3mm)
     block(width: 100%, {
-      set par(justify: false)
+      set par(justify: false, leading: 0.76em)
       text(size: 25pt, fill: ink, it.body)
     })
     v(4mm)
