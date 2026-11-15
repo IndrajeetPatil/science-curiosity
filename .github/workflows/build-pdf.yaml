@@ -3,7 +3,7 @@ name: Build and publish PDF
 on:
   push:
     branches: [main]
-    paths: &source-paths
+    paths:
       - "*.typ"
       - "*.json"
       - "Makefile"
@@ -14,8 +14,8 @@ on:
       - "tools/**"
       - "site/**"
       - ".github/workflows/build-pdf.yaml"
+  # Run on every pull request so the required build check always reports.
   pull_request:
-    paths: *source-paths
   workflow_dispatch:
 
 permissions:

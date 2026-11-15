@@ -28,9 +28,10 @@ the build does not claim PDF/UA certification.
 
 ## Publishing
 
-The `Build and publish PDF` workflow runs on pull requests and on pushes to
-`main` that touch the book. It rebuilds the PDF, runs `make check`, and fails
-if the committed PDF differs from the rebuilt one.
+The `Build and publish PDF` workflow runs on every pull request, where `build`
+is a required check, and on pushes to `main` that touch the book. It rebuilds
+the PDF, runs `make check`, and fails if the committed PDF differs from the
+rebuilt one.
 
 On `main`, it then deploys a Pages site that holds only the committed PDF and a
 `site/index.html` redirect to it. The book's Pages site sits under the author's
