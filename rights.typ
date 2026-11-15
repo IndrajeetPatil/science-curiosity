@@ -25,6 +25,6 @@
 #line(length: 100%, stroke: 0.6pt + rule)
 #v(4mm)
 #text(size: 10pt, fill: muted)[
-  अधिकृत प्रत, संपर्क आणि परवानगीविषयक चौकशी:\
-  #link("https://www.indrapatil.com/writing/")[www.indrapatil.com/writing/]
+  संपर्क आणि परवानगीविषयक चौकशी:\
+  #link("mailto:patilindrajeet.science@gmail.com")[patilindrajeet.science\@gmail.com]
 ]
