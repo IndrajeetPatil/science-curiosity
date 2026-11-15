@@ -16,8 +16,6 @@
   #line(length: 100%, stroke: 0.6pt + rule)
   #v(5mm)
   #text(size: 19pt, fill: ink)[इंद्रजीत पाटील]
-  #v(2mm)
-  #text(font: "Mukta", size: 9pt, fill: muted)[मराठी · दहा लेख · २०११]
 ]
 
 #page[
