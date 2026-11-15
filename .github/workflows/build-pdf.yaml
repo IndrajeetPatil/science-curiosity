@@ -1,4 +1,4 @@
-name: Build PDF
+name: Build and publish PDF
 
 on:
   push:
@@ -12,6 +12,7 @@ on:
       - "figures/**"
       - "fonts/**"
       - "tools/**"
+      - "site/**"
       - ".github/workflows/build-pdf.yaml"
   pull_request:
     paths: *source-paths
@@ -22,7 +23,8 @@ permissions:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+  # Never cancel a Pages deployment on main part-way through.
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   build:
@@ -48,3 +50,29 @@ jobs:
             echo "::error file=science-curiosity.pdf::Rebuild the PDF with 'make build' and commit it."
             exit 1
           }
+
+      - name: Assemble the Pages site
+        if: github.ref == 'refs/heads/main'
+        run: |
+          mkdir _site
+          cp site/index.html science-curiosity.pdf _site/
+
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        if: github.ref == 'refs/heads/main'
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}science-curiosity.pdf
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1

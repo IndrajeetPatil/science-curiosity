@@ -40,12 +40,7 @@ lint: ## Check Markdown and spelling
 link-check: ## Check maintained documentation and source links
 	lychee --include-verbatim --cache=false .
 
-export-website: build ## Copy only the PDF to the website checkout in WEBSITE_DIR
-	@test -n "$(WEBSITE_DIR)" || { echo "Set WEBSITE_DIR to the website checkout."; exit 1; }
-	@test -d "$(WEBSITE_DIR)/public/pdfs/writing" || { echo "Set WEBSITE_DIR to the website checkout."; exit 1; }
-	cp $(PDF) "$(WEBSITE_DIR)/public/pdfs/writing/$(PDF)"
-
 clean: ## Remove generated previews
 	rm -rf build
 
-.PHONY: help doctor build pdf watch render inspect check lint link-check export-website clean
+.PHONY: help doctor build pdf watch render inspect check lint link-check clean
