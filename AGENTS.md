@@ -12,10 +12,8 @@ Typst source for the Marathi book *Science Curiosity*. Start with the
 - Never edit chapter prose in `chapters/*.typ` while refactoring; the
   manuscript must stay word-for-word.
 
-## After pull requests merge
+## Publishing
 
-The website distributes the PDF. Once every pull request in a batch has merged,
-update local `main` and run `make export-website WEBSITE_DIR=<website
-checkout>`, which copies the PDF into that checkout. If
-`public/pdfs/writing/science-curiosity.pdf` changed there, deliver it through a
-website pull request that follows that repository's `AGENTS.md`.
+Merging to `main` publishes the committed PDF to GitHub Pages at
+<https://www.indrapatil.com/science-curiosity/science-curiosity.pdf>, which the
+website links to. No website change is needed when the book changes.

@@ -6,8 +6,8 @@ image acknowledgements accompany the articles, which keep their published
 wording and historical scientific claims.
 
 This repository contains the editable book, its assets, and the finished
-[PDF](science-curiosity.pdf). The author's website distributes the PDF to
-readers.
+[PDF](science-curiosity.pdf). GitHub Pages publishes the PDF, and the author's
+website links readers to it.
 
 ![Four-stage book build: authoring Unicode Typst source and assets; Make runs Typst 0.15.1 to typeset tagged PDF/A-2u pages; Python, uv and PyMuPDF finalise PDF metadata; make export-website copies the PDF to the website.](figures/book-build-pipeline.webp)
 
@@ -43,8 +43,10 @@ finalise the built PDF.
 3. **Finalisation:** a local Python tool using PyMuPDF writes the PDF's viewer
    metadata. `make check` rebuilds the PDF and verifies the text and document
    structure.
-4. **Distribution:** `make export-website` copies the finished PDF to the
-   website checkout. The website handles presentation and deployment.
+4. **Publishing:** on every push to `main` that changes the book, GitHub
+   Actions rebuilds and checks the PDF, then deploys the committed PDF to
+   GitHub Pages at
+   <https://www.indrapatil.com/science-curiosity/science-curiosity.pdf>.
 
 ## Build locally
 
