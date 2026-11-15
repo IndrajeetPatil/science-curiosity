@@ -1,6 +1,6 @@
 # Build pipeline
 
-The repository owns the editable Marathi manuscript, its book assets and the
+The repository owns the editable Marathi manuscript, its book assets, and the
 finished PDF. GitHub Pages publishes the PDF, and the author's website links
 to it.
 
@@ -14,7 +14,7 @@ together in `figures/`.
    structure in `book.typ` and design rules in `layout.typ`.
 2. `make build` checks for Typst 0.15.1 and invokes Typst with the included
    fonts and the PDF/A-2u output profile. Typst lays out the text, figures,
-   captions and front matter, then writes `science-curiosity.pdf`.
+   captions, and front matter, then writes `science-curiosity.pdf`.
 3. `tools/finalise_pdf.py` uses PyMuPDF to complete viewer metadata that Typst
    does not write. It adds the XMP keyword bag, enables the document-title
    viewer preference and writes a deterministic saved-version identifier while
@@ -22,7 +22,7 @@ together in `figures/`.
 4. The final PDF is committed alongside the source. Identical source builds
    produce identical files.
 
-Typst embeds the title, author, description, language and edition date declared
+Typst embeds the title, author, description, language, and edition date declared
 in `layout.typ` in the PDF Info dictionary and XMP. The PDF conforms to PDF/A-2u;
 the build does not claim PDF/UA certification.
 

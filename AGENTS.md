@@ -1,7 +1,7 @@
 # AGENTS.md
 
 Typst source for the Marathi book *Science Curiosity*. Start with the
-[README](README.md) for the book, toolchain and build architecture. Run
+[README](README.md) for the book, toolchain, and build architecture. Run
 `make help` for the available commands.
 
 ## Before committing
