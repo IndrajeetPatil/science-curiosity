@@ -8,5 +8,9 @@ optimized = "optimized"
 # PyMuPDF's document catalogue accessor uses this spelling.
 pdf_catalog = "pdf_catalog"
 
+[default.extend-words]
+# US institution names in image credits keep their own spelling.
+Center = "Center"
+
 [files]
 extend-exclude = ["build/**"]
