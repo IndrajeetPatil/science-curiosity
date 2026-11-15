@@ -33,17 +33,25 @@ is a required check, and on pushes to `main` that touch the book. It rebuilds
 the PDF, runs `make check`, and fails if the committed PDF differs from the
 rebuilt one.
 
-On `main`, it then deploys a Pages site that holds only the committed PDF and a
-`site/index.html` redirect to it. The book's Pages site sits under the author's
+On `main`, it then deploys a Pages site that holds the committed PDF, a
+`site/index.html` redirect to it, and the `site/social-card.png` link-preview
+image. The redirect page's Open Graph tags point to that image, so shared links
+to the site show the card. The book's Pages site sits under the author's
 custom domain:
 
 | Address | Serves |
 | --- | --- |
 | <https://www.indrapatil.com/science-curiosity/science-curiosity.pdf> | The PDF |
 | <https://www.indrapatil.com/science-curiosity/> | A redirect to the PDF |
+| <https://www.indrapatil.com/science-curiosity/social-card.png> | The 1280 × 640 social preview card |
 
 The author's website links to the PDF address, so book changes need no website
 change.
+
+Run `make social-card` after changing `social-card.typ` or the cover styling
+it shares, and commit the regenerated PNG. The same image serves as the
+repository's GitHub social preview, which is uploaded in the repository
+settings.
 
 Use `make help` for the current command list. `make watch` is for Typst previews;
 run `make build` to produce the final PDF with its metadata.

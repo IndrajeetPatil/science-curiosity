@@ -2,7 +2,8 @@
 
 TYPST_VERSION := 0.15.1
 PDF := science-curiosity.pdf
-TYPST_FLAGS := --ignore-system-fonts --font-path fonts --pdf-standard a-2u
+TYPST_FLAGS_BASE := --ignore-system-fonts --font-path fonts
+TYPST_FLAGS := $(TYPST_FLAGS_BASE) --pdf-standard a-2u
 
 help: ## List common operations
 	@awk 'BEGIN {FS = ":.*## "} /^[a-z-]+:.*## / {printf "  %-18s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
@@ -16,6 +17,9 @@ build: doctor ## Typeset the distributable PDF
 	uv run --script tools/finalise_pdf.py $(PDF)
 
 pdf: build ## Alias for build
+
+social-card: doctor ## Render the 1280 × 640 social preview card
+	typst compile $(TYPST_FLAGS_BASE) --ppi 144 social-card.typ site/social-card.png
 
 watch: doctor ## Rebuild automatically while editing
 	typst watch $(TYPST_FLAGS) book.typ $(PDF)
@@ -43,4 +47,4 @@ link-check: ## Check maintained documentation and source links
 clean: ## Remove generated previews
 	rm -rf build
 
-.PHONY: help doctor build pdf watch render inspect check lint link-check clean
+.PHONY: help doctor build pdf social-card watch render inspect check lint link-check clean
