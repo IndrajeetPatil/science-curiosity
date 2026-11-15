@@ -11,6 +11,10 @@ shaping and ligatures remain intact: the text uses neither letter spacing nor
 character-level justification. Typst's widow and orphan prevention stays
 enabled.
 
+The cover and the contents page each back onto a blank page, so the title
+page and the first chapter open on right-hand pages. The book closes with
+image acknowledgements and a page about the author.
+
 Each chapter opens on a right-hand page, after a blank left-hand page without
 header or page number where needed. Chapter openings use a quiet label, a large
 title and a short accent line.

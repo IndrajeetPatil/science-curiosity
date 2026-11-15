@@ -18,6 +18,9 @@
   #text(size: 19pt, fill: ink)[इंद्रजीत पाटील]
 ]
 
+// The cover's reverse stays blank so the title page opens on a right-hand page.
+#page[]
+
 #page[
   #set text(size: 12pt)
   #v(17mm)
@@ -31,15 +34,14 @@
 
   ही मूळ लेखांची नव्या मांडणीतील आवृत्ती आहे. लेखांतील आकडेवारी, तत्कालीन संशोधनाचा संदर्भ आणि भविष्याविषयीची विधाने मूळ प्रकाशनकाळाच्या संदर्भात वाचावीत. मजकुराचे शास्त्रीय अद्ययावतीकरण केलेले नाही.
 
-  या आवृत्तीत नवी अक्षररचना, अनुक्रमणिका, चित्रविवरणे आणि चित्रस्रोतांची नोंद जोडली आहे. स्रोतांची खात्री जिथे झालेली नाही, तिथे तसे स्पष्ट नमूद केले आहे.
+  या आवृत्तीत नवी अक्षररचना, अनुक्रमणिका, चित्रविवरणे आणि चित्रस्रोतांची नोंद जोडली आहे. मूळ संग्रहातील ज्या चित्रांचे स्रोत निश्चित करता आले नाहीत, त्यांच्या जागी सार्वजनिक मालकीतील किंवा मुक्त परवान्याखालील चित्रे वापरली आहेत.
   #v(1fr)
   #line(length: 100%, stroke: 0.6pt + rule)
   #v(4mm)
   #text(size: 9pt, fill: muted)[
     मूळ लेख: २०११\
     पुनर्मांडणी: सप्टेंबर २०२६\
-    अक्षररचना: Tiro Devanagari Marathi आणि Mukta\
-    #link("https://www.indrapatil.com/writing/")[www.indrapatil.com/writing/]
+    अक्षररचना: Tiro Devanagari Marathi आणि Mukta
   ]
 ]
 
@@ -62,6 +64,9 @@
   ]
   #outline(title: none, depth: 1)
 ]
+
+// The contents' reverse stays blank so the first chapter opens on a right-hand page.
+#page[]
 
 // A page left blank so the next chapter opens on a right-hand page.
 #let is-blank-verso() = {
@@ -109,3 +114,7 @@
 #show heading.where(level: 1): it => text(size: 26pt, fill: ink, it.body)
 #heading(level: 1, numbering: none)[चित्रस्रोत आणि आभार]
 #include "credits.typ"
+
+#pagebreak()
+#heading(level: 1, numbering: none)[लेखकाविषयी]
+#include "author.typ"

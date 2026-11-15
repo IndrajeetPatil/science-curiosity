@@ -109,7 +109,8 @@ def has_chapter_heading(page: pymupdf.Page) -> bool:
 def check_pages(pdf: pymupdf.Document) -> None:
     top_bookmarks = [entry for entry in pdf.get_toc() if entry[0] == 1]
     require(
-        len(top_bookmarks) == 11, "Expected ten chapter bookmarks and acknowledgements."
+        len(top_bookmarks) == 12,
+        "Expected ten chapter bookmarks, acknowledgements, and the author note.",
     )
     require(
         sum(len(page.get_images()) for page in pdf) == 10,
@@ -119,9 +120,11 @@ def check_pages(pdf: pymupdf.Document) -> None:
     heading_pages = []
     for number, page in enumerate(pdf, start=1):
         text = page.get_text()
-        # A blank left-hand page may precede a chapter opening.
+        # A blank left-hand page may follow the cover or precede a chapter opening.
         require(
-            len(text.strip()) > 20 or (number % 2 == 0 and number + 1 in openings),
+            len(text.strip()) > 20
+            or number == 2
+            or (number % 2 == 0 and number + 1 in openings),
             f"Unexpected blank page {number}.",
         )
         require("\ufffd" not in text, f"Replacement character on page {number}.")
