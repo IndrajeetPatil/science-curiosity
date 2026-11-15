@@ -68,8 +68,9 @@
   show figure.caption: set par(justify: false, leading: 0.75em)
   show figure: set block(above: 18pt, below: 20pt)
   show link: set text(fill: ink)
+  // Chapters open on a right-hand (odd) page, as in printed books.
   show heading.where(level: 1): it => {
-    pagebreak(weak: true)
+    pagebreak(weak: true, to: "odd")
     v(9mm)
     text(font: "Mukta", size: 10pt, fill: gold)[लेख #context counter(heading).display(devanagari)]
     v(3mm)

@@ -65,9 +65,16 @@
   #outline(title: none, depth: 1)
 ]
 
+// A page left blank so the next chapter opens on a right-hand page.
+#let is-blank-verso() = {
+  let page = here().page()
+  query(<chapter-end>).any(m => m.location().page() == page - 1) and query(heading.where(level: 1)).any(h => h.location().page() == page + 1)
+}
+
 #counter(page).update(1)
 #set page(
   header: context {
+    if is-blank-verso() { return }
     set text(size: 8pt, fill: muted)
     let current = query(heading.where(level: 1).before(here())).last(default: none)
     let opening = query(heading.where(level: 1)).any(h => h.location().page() == here().page())
@@ -77,6 +84,7 @@
     }
   },
   footer: context {
+    if is-blank-verso() { return }
     set text(size: 9pt, fill: muted)
     align(center, counter(page).display(devanagari))
   },
@@ -95,6 +103,7 @@
 ) {
   include "chapters/" + chapter + ".typ"
   place.flush()
+  [#metadata(none) <chapter-end>]
 }
 
 #pagebreak()
