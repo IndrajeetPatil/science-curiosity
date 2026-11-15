@@ -1,12 +1,6 @@
 # Include Typst sources and JSON metadata in the recursive documentation scan.
 extensions = ["md", "typ", "json", "txt"]
-# Preserved research snapshots are evidence, not maintained documentation.
-# Keep provenance/rights-research.md in the scan.
-exclude_path = [
-    '(^|/)provenance/image-research(/|$)',
-    '(^|/)provenance/recovered-lines\.json$',
-    '(^|/)(build|work|\.git)(/|$)',
-]
+exclude_path = ['(^|/)(build|work|\.git)(/|$)']
 timeout = 30
 max_concurrency = 3
 max_retries = 2

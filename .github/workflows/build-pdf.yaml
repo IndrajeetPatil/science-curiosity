@@ -11,7 +11,6 @@ on:
       - "chapters/**"
       - "figures/**"
       - "fonts/**"
-      - "provenance/original-2011.pdf"
       - "tools/**"
       - ".github/workflows/build-pdf.yaml"
   pull_request:

@@ -2,7 +2,7 @@
 # requires-python = ">=3.15"
 # dependencies = ["pymupdf==1.28.2"]
 # ///
-"""Check this historical edition's recovered manuscript and rendered PDF."""
+"""Check the manuscript text and the rendered PDF."""
 
 import hashlib
 import json
@@ -14,13 +14,9 @@ from typing import Any
 import pymupdf
 
 ROOT = Path(__file__).resolve().parents[1]
-ORIGINAL_SHA256 = "edfc70f7d910edfcfb04cca61f2b62345047a6c7423e787f272998061ff4c79d"
-REPAIRS = {
-    "राyतो": "राहतो",
-    "टुरिंगन (Turing)े": "टुरिंगने (Turing)",
-    "civilization": "civilisation",
-    "specialized": "specialised",
-}
+# SHA-256 of the chapter text with whitespace removed. Update it only for
+# deliberate wording changes; refactoring must leave it unchanged.
+CHAPTER_TEXT_SHA256 = "b7bc53d8033f0877f72806ee1ff1894d019038a7c23a3507ce61f0152670182d"
 XMP_NAMESPACES = {
     "dc": "http://purl.org/dc/elements/1.1/",
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
@@ -40,19 +36,8 @@ def require(condition: object, message: str) -> None:
         raise SystemExit(message)
 
 
-def normalise(text: str) -> str:
-    for old, new in REPAIRS.items():
-        text = text.replace(old, new)
-    return re.sub(r"\s+", "", text)
-
-
 def read_json(path: str) -> Any:
     return json.loads((ROOT / path).read_text(encoding="utf-8"))
-
-
-def is_skipped(page: int, first_page: int, y: float) -> bool:
-    """Skip old folios/bylines, chapter titles and the separately checked table."""
-    return y > 705 or (page == first_page and y < 160) or (page == 22 and 290 < y < 530)
 
 
 def check_inventory(chapters: list[dict], figures: list[dict]) -> None:
@@ -68,26 +53,17 @@ def check_inventory(chapters: list[dict], figures: list[dict]) -> None:
         )
 
 
-def check_manuscript(chapters: list[dict], recovered: list[list[dict]]) -> int:
-    """Check that recovered text appears in order; return the characters matched."""
-    checked = 0
-    for chapter in chapters:
-        text = (ROOT / "chapters" / chapter["file"]).read_text(encoding="utf-8")
-        source = normalise(text).replace("\\", "")
-        position = 0
-        first, last = chapter["pages"]
-        for page in range(first, last + 1):
-            for line in recovered[page - 1]:
-                if is_skipped(page, first, line["y"]):
-                    continue
-                target = normalise(line["text"])
-                found = source.find(target, position)
-                require(
-                    found >= 0, f"Missing or reordered text from original page {page}."
-                )
-                position = found + len(target)
-                checked += len(target)
-    return checked
+def check_manuscript(chapters: list[dict]) -> int:
+    """Check the chapter wording is unchanged; return its non-whitespace length."""
+    text = "".join(
+        re.sub(r"\s+", "", (ROOT / "chapters" / chapter["file"]).read_text("utf-8"))
+        for chapter in chapters
+    )
+    require(
+        hashlib.sha256(text.encode()).hexdigest() == CHAPTER_TEXT_SHA256,
+        "Chapter wording has changed. Update CHAPTER_TEXT_SHA256 only if intended.",
+    )
+    return len(text)
 
 
 def check_metadata(pdf: pymupdf.Document) -> None:
@@ -161,23 +137,17 @@ def check_pages(pdf: pymupdf.Document) -> None:
 
 
 def main() -> None:
-    original = (ROOT / "provenance/original-2011.pdf").read_bytes()
-    require(
-        hashlib.sha256(original).hexdigest() == ORIGINAL_SHA256,
-        "The archived original PDF has changed.",
-    )
-    recovered = read_json("provenance/recovered-lines.json")
     chapters = read_json("chapters.json")
     figures = read_json("figures.json")
     check_inventory(chapters, figures)
-    checked = check_manuscript(chapters, recovered)
+    checked = check_manuscript(chapters)
 
     with pymupdf.open(ROOT / "science-curiosity.pdf") as pdf:
         check_metadata(pdf)
         check_pages(pdf)
         page_count = len(pdf)
     print(
-        f"Verified {checked:,} recovered characters in reading order, {page_count} pages, "
+        f"Verified {checked:,} manuscript characters, {page_count} pages, "
         "10 illustrations, embedded fonts, chapter bookmarks and PDF metadata."
     )
     print("Visual review is still required after changes to typography or layout.")

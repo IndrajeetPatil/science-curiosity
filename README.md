@@ -1,13 +1,13 @@
 # Science Curiosity / विज्ञान कुतूहल
 
 **विज्ञान कुतूहल (Science Curiosity)** is a Marathi popular-science book
-collecting ten articles first published in *Loksatta* in 2011. This edition
-redesigns the reading layout and adds captions and image acknowledgements while
-preserving the articles and their historical scientific claims.
+collecting ten articles first published in *Loksatta* in 2011. Captions and
+image acknowledgements accompany the articles, which keep their published
+wording and historical scientific claims.
 
-This repository contains the editable book, its assets and research, and the
-finished [PDF](science-curiosity.pdf). The website repository distributes the
-PDF for readers; it does not participate in authoring or typesetting the book.
+This repository contains the editable book, its assets, and the finished
+[PDF](science-curiosity.pdf). The author's website distributes the PDF to
+readers.
 
 ![Four-stage book build: authoring Unicode Typst source and assets; Make runs Typst 0.15.1 to typeset tagged PDF/A-2u pages; Python, uv and PyMuPDF finalise PDF metadata; make export-website copies the PDF to the website.](figures/book-build-pipeline.webp)
 
@@ -15,21 +15,24 @@ PDF for readers; it does not participate in authoring or typesetting the book.
 
 - **Typst 0.15.1** typesets the Unicode `.typ` manuscript and produces tagged
   PDF/A-2u. The pinned version keeps builds consistent.
+
 - **Tiro Devanagari Marathi** and **Mukta** provide the included fonts. Typst's
   bundled fallback fonts cover remaining characters.
+
 - **SVG and raster images** supply the cover and chapter illustrations.
+
 - **Make** provides the build and maintenance commands. **Poppler** renders and
   inspects PDFs; **Python 3.15+**, **uv** and **PyMuPDF** finalise PDF metadata
-  and support integrity and recovery tools.
+  and support the integrity checks.
+
 - **rumdl**, **typos** and **lychee** check Markdown, spelling and links.
 
 The source is organised around the book: `chapters/` holds the canonical Marathi
 text; `book.typ` defines the cover, front matter and chapter order; `layout.typ`
 sets typography and page design. `figures/`, `figures.json` and `credits.typ`
 hold illustrations and their acknowledgements, while `fonts/` contains the
-licensed font files. The tools in `tools/` check the manuscript and PDF, recover
-text from the original source, and finalise the built PDF. Research and source
-records live in `provenance/`.
+licensed font files. The tools in `tools/` check the manuscript and PDF and
+finalise the built PDF.
 
 ### Build pipeline
 
@@ -71,7 +74,7 @@ The public reading copy is available on
 - [Build pipeline](docs/build-pipeline.md): how Typst typesets the book and
   how the PDF is finalised and distributed.
 - [Layout](docs/layout.md): the book's page and typography decisions.
-- [Text preservation](docs/text-preservation.md): manuscript recovery and
-  comparison with the original source.
+- [Manuscript](docs/manuscript.md): the canonical chapter text and how
+  `make check` guards its wording.
 - [Illustration sources](docs/illustration-sources.md): image attribution and
   verification status.
