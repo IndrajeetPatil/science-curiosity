@@ -17,7 +17,7 @@ image acknowledgements and a page about the author.
 
 Each chapter opens on a right-hand page, after a blank left-hand page without
 header or page number where needed. Chapter openings use a quiet label, a large
-title and a short accent line.
+title, and a short accent line.
 Section headings use space above and below and stay with the following text.
 Figures keep captions with their images and have clearance from body text. The
 processor table uses larger text, padded rows and subtle alternating fills.

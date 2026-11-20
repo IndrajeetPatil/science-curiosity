@@ -160,7 +160,7 @@ def main() -> None:
         page_count = len(pdf)
     print(
         f"Verified {checked:,} manuscript characters, {page_count} pages, "
-        "10 illustrations, embedded fonts, chapter bookmarks and PDF metadata."
+        "10 illustrations, embedded fonts, chapter bookmarks, and PDF metadata."
     )
     print("Visual review is still required after changes to typography or layout.")
 
