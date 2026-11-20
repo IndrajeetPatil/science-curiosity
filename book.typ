@@ -109,12 +109,15 @@
   [#metadata(none) <chapter-end>]
 }
 
-#pagebreak()
 #show heading.where(level: 1): set block(above: 8mm, below: 9mm)
 #show heading.where(level: 1): it => text(size: 26pt, fill: ink, it.body)
+
+#page(header: none, footer: none)[]
+
 #heading(level: 1, numbering: none)[चित्रस्रोत आणि आभार]
 #include "credits.typ"
 
-#pagebreak()
+#page(header: none, footer: none)[]
+
 #heading(level: 1, numbering: none)[लेखकाविषयी]
 #include "author.typ"
