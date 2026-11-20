@@ -117,14 +117,17 @@ def check_pages(pdf: pymupdf.Document) -> None:
         "Expected ten embedded illustrations.",
     )
     openings = {entry[2] for entry in top_bookmarks[:10]}
+    backmatter_openings = {entry[2] for entry in top_bookmarks[10:]}
     heading_pages = []
     for number, page in enumerate(pdf, start=1):
         text = page.get_text()
         # A blank left-hand page may follow the cover or precede a chapter opening.
+        # A blank page also precedes each backmatter section.
         require(
             len(text.strip()) > 20
             or number == 2
-            or (number % 2 == 0 and number + 1 in openings),
+            or (number % 2 == 0 and number + 1 in openings)
+            or (number + 1 in backmatter_openings),
             f"Unexpected blank page {number}.",
         )
         require("\ufffd" not in text, f"Replacement character on page {number}.")
@@ -160,7 +163,7 @@ def main() -> None:
         page_count = len(pdf)
     print(
         f"Verified {checked:,} manuscript characters, {page_count} pages, "
-        "10 illustrations, embedded fonts, chapter bookmarks and PDF metadata."
+        "10 illustrations, embedded fonts, chapter bookmarks, and PDF metadata."
     )
     print("Visual review is still required after changes to typography or layout.")
 
