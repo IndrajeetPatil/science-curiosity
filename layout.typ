@@ -3,8 +3,16 @@
 #let rule = rgb("cbd5d1")
 #let gold = rgb("ae7546")
 #let paper = rgb("faf8f1")
+#let hairline = 0.6pt + rule
 #let devanagari(n) = numbering("१", n)
+#let chapters = json("chapters.json")
 #let figures = json("figures.json")
+
+// A full-width hairline that sets a page's closing lines apart.
+#let divider = line(length: 100%, stroke: hairline)
+
+// A sans-serif label for sections of the front and back matter; not a heading element.
+#let subheading(body) = text(font: "Mukta", size: 12pt, fill: ink, body)
 
 #let book-figure(n) = {
   let item = figures.at(n - 1)
@@ -29,7 +37,7 @@
         table.header(
           [वर्ष], [प्रोसेसरचे नाव], [प्रक्रिया\ (नैनोमीटर)], [वेग\ (क्रिया/सेकंद)], [ट्रान्झिस्टर्सची\ संख्या],
         ),
-        table.hline(stroke: 0.6pt + rule),
+        table.hline(stroke: hairline),
         [१९७२], [८००८], [१०,०००], [५ लाख], [३५००],
         [१९८५], [८०३८६], [१५००], [१.६ कोटी], [२७५,०००],
         [१९९३], [पेंटियम], [८००], [६.३ कोटी], [३१ लाख],
@@ -37,7 +45,7 @@
         [२०००], [पेंटियम-४], [१८०], [२ अब्ज], [४.२ कोटी],
         [२००६], [कोर-२], [६५], [२.३ अब्ज], [२९.१ कोटी],
         [२०१०], [झिऑन], [४५], [२.७ अब्ज], [२.३ अब्ज],
-        table.hline(stroke: 0.6pt + rule),
+        table.hline(stroke: hairline),
       )
     },
     kind: table,

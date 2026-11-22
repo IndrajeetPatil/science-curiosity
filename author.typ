@@ -1,4 +1,4 @@
-#import "layout.typ": ink, rule
+#import "layout.typ": divider, ink
 #set text(size: 11.5pt)
 #set par(justify: false, leading: 0.85em, spacing: 1.3em)
 
@@ -9,6 +9,6 @@
 लोकप्रिय विज्ञानलेखन आणि कथालेखन हे त्यांच्या लेखनाचे दोन प्रांत आहेत.
 
 #v(1fr)
-#line(length: 100%, stroke: 0.6pt + rule)
+#divider
 #v(4mm)
 #text(font: "Mukta", size: 12pt, fill: ink)[#link("https://www.indrapatil.com/")[www.indrapatil.com]]

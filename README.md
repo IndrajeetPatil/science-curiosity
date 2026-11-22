@@ -28,8 +28,9 @@ website links readers to it.
 - **rumdl**, **typos**, and **lychee** check Markdown, spelling, and links.
 
 The source is organised around the book: `chapters/` holds the canonical Marathi
-text; `book.typ` defines the cover, front matter, and chapter order; `layout.typ`
-sets typography and page design. `figures/`, `figures.json`, and `credits.typ`
+text; `book.typ` defines the cover, front matter, and back matter and includes
+the chapters in the order `chapters.json` lists them; `layout.typ` sets
+typography and page design. `figures/`, `figures.json`, and `credits.typ`
 hold illustrations and their acknowledgements; `author.typ` holds the author
 note; `fonts/` contains the licensed font files. `social-card.typ` renders the
 link-preview card in `site/`, and the tools in `tools/` check the manuscript

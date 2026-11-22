@@ -13,7 +13,7 @@
   #v(10mm)
   #align(center)[#image("figures/cover-orbits.svg", width: 101mm)]
   #v(1fr)
-  #line(length: 100%, stroke: 0.6pt + rule)
+  #divider
   #v(5mm)
   #text(size: 19pt, fill: ink)[इंद्रजीत पाटील]
 ]
@@ -28,7 +28,7 @@
   #v(4mm)
   #text(size: 15pt)[इंद्रजीत पाटील]
   #v(17mm)
-  #text(font: "Mukta", size: 12pt, fill: ink)[या आवृत्तीविषयी]
+  #subheading[या आवृत्तीविषयी]
   #v(3mm)
   या संग्रहातील दहा विज्ञानलेख प्रथम २०११ मध्ये मराठी दैनिक ‘लोकसत्ता’मध्ये प्रसिद्ध झाले. प्राण्यांची जाणीव, अवकाशातील रेणू, संगणक, मानवी शरीर आणि पदार्थांचे विलक्षण गुणधर्म अशा विविध विषयांचा येथे वेध घेतला आहे.
 
@@ -36,7 +36,7 @@
 
   या आवृत्तीत नवी अक्षररचना, अनुक्रमणिका, चित्रविवरणे आणि चित्रस्रोतांची नोंद जोडली आहे. प्रत्येक चित्राचा स्रोत आणि परवाना ‘चित्रस्रोत आणि आभार’ या विभागात दिला आहे.
   #v(1fr)
-  #line(length: 100%, stroke: 0.6pt + rule)
+  #divider
   #v(4mm)
   #text(size: 9pt, fill: muted)[
     मूळ लेख: २०११\
@@ -92,19 +92,8 @@
     align(center, counter(page).display(devanagari))
   },
 )
-#for chapter in (
-  "01-self-awareness",
-  "02-buckyballs",
-  "03-immunity",
-  "04-moores-law",
-  "05-machine-intelligence",
-  "06-lie-detection",
-  "07-perpetual-motion",
-  "08-thermoregulation",
-  "09-metamaterials",
-  "10-regeneration",
-) {
-  include "chapters/" + chapter + ".typ"
+#for chapter in chapters {
+  include "chapters/" + chapter.file
   place.flush()
   [#metadata(none) <chapter-end>]
 }
