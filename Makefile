@@ -42,7 +42,7 @@ lint: ## Check Markdown and spelling
 	typos .
 
 link-check: ## Check maintained documentation and source links
-	lychee --include-verbatim --cache=false .
+	lychee .
 
 clean: ## Remove generated previews
 	rm -rf build
