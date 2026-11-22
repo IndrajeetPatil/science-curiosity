@@ -1,5 +1,5 @@
 // Social preview card (1280 × 640 px at 144 ppi) in the cover's style.
-#import "layout.typ": ink, muted, rule, gold, paper
+#import "layout.typ": gold, ink, muted, paper
 
 #set page(width: 640pt, height: 320pt, margin: 0pt, fill: paper)
 #set text(font: "Tiro Devanagari Marathi", lang: "mr", fill: ink)
