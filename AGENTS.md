@@ -18,6 +18,14 @@ Merging to `main` publishes the committed PDF to GitHub Pages at
 <https://www.indrapatil.com/science-curiosity/science-curiosity.pdf>, which the
 website links to. No website change is needed when the book changes.
 
+## Learn from mistakes
+
+When a check fails, a reviewer raises a finding, or you notice a mistake in
+your own work, fix it, then ask what led you to it. If `AGENTS.md`, a skill,
+its scripts or templates, a prompt, or a doc gave missing, ambiguous, or
+wrong guidance, correct that guidance in the same pull request, stating the
+general rule rather than the incident. Never weaken a quality gate instead.
+
 ## Pull requests
 
 Follow these rules without relying on any instructions outside this
